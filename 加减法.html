@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加减法</title>
+    <style>
+        body {
+            background-color: #f6f6f6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #app {
+            margin: 88px auto;
+            width: 550px;
+            height: 100px;
+            position: relative;
+            background: white;
+            font-size: 18px;
+            color: #666;
+            border: 1px solid transparent;
+            box-shadow: 0 10px 25px #666;
+        }
+        
+        #app .box-up,
+        #app .box-down {
+            height: 50px;
+        }
+        
+        #app .box-up {
+            cursor: pointer;
+        }
+        
+        #app .box-up span:nth-child(1) {
+            border: none;
+        }
+        
+        #app .box-down {
+            position: absolute;
+            left: 0;
+            top: 50px;
+            transition: all .4s;
+            background: #52352d;
+            color: white;
+        }
+        
+        #app span {
+            display: block;
+            box-sizing: border-box;
+            float: left;
+            width: 50px;
+            height: 50px;
+            border-left: 1px solid #52352d;
+            line-height: 50px;
+            text-align: center;
+        }
+        
+        #app .box-down .pin {
+            background-color: #52352d;
+        }
+        
+        #app .pin-select {
+            background-color: #52352d;
+            color: white;
+            font-size: 48px;
+        }
+        
+        #app .monkey {
+            position: absolute;
+            top: -45px;
+            left: 0;
+            width: 50px;
+            transition: all .4s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="box-up">
+            <span class="pin-select">10</span>
+            <span>9</span>
+            <span>8</span>
+            <span>7</span>
+            <span>6</span>
+            <span>5</span>
+            <span>4</span>
+            <span>3</span>
+            <span>2</span>
+            <span>1</span>
+            <span>0</span>
+        </div>
+        <div class="box-down">
+            <span class="pin"></span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+        </div>
+
+        <img src="images/moneky.png" alt="" class="monkey">
+    </div>
+
+
+</body>
+<script>
+    let arr = document.querySelectorAll('.box-up span')
+    let boxDown = document.querySelector('.box-down');
+    let monkey = document.querySelector('.monkey');
+    console.log(arr);
+    console.log(boxDown);
+
+    function clearSelect() {
+        for (let i = 0; i < arr.length; i++) {
+            arr[i].className = '';
+        }
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+        arr[i].addEventListener('click', function() {
+            clearSelect();
+            this.className = 'pin-select';
+            let offset = (10 - this.innerText) * 50;
+            boxDown.style.transform = 'translate(' + offset + 'px, 0)';
+            monkey.style.transform = 'translate(' + offset + 'px, 0)';
+        });
+    }
+</script>
+
+</html>
