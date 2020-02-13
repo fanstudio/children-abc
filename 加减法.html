@@ -57,10 +57,6 @@
             text-align: center;
         }
         
-        #app .box-down .pin {
-            background-color: #52352d;
-        }
-        
         #app .pin-select {
             background-color: #52352d;
             color: white;
@@ -73,6 +69,65 @@
             left: 0;
             width: 50px;
             transition: all .4s;
+        }
+        
+        .box-down .down-pin-select {
+            background-color: #817d7c;
+        }
+        
+        #app-detail {
+            margin: auto;
+            width: 550px;
+            height: 100px;
+            background: white;
+            padding: 10px;
+            font-size: 28px;
+            line-height: 50px;
+            text-align: center;
+            color: #52352d;
+        }
+        
+        .box-left,
+        .box-right {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            float: left;
+        }
+        
+        .box-num1,
+        .box-num2,
+        .box-num3 {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 1px solid #52352d;
+        }
+        
+        .box-num1 {
+            left: 50px;
+            top: 0;
+            color: white;
+            background: #52352d;
+        }
+        
+        .box-num2 {
+            left: 0;
+            top: 55px;
+            background-color: #817d7c;
+            color: white;
+        }
+        
+        .box-num3 {
+            left: 100px;
+            top: 55px;
+        }
+        
+        .copyright {
+            font-size: 12px;
+            color: #666;
+            line-height: 100px;
+            text-align: center;
         }
     </style>
 </head>
@@ -93,8 +148,8 @@
             <span>0</span>
         </div>
         <div class="box-down">
-            <span class="pin"></span>
-            <span>1</span>
+            <span style="text-indent: -9999px;">0</span>
+            <span class="down-pin-select">1</span>
             <span>2</span>
             <span>3</span>
             <span>4</span>
@@ -109,30 +164,101 @@
         <img src="images/moneky.png" alt="" class="monkey">
     </div>
 
+    <div id="app-detail">
+        <div class="box-left">
+            <div class="box-num1"></div>
+            <div class="box-num2"></div>
+            <div class="box-num3"></div>
+        </div>
+        <div class="box-right">
+            <div class="box-minus"></div>
+            <div class="box-add"></div>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <span>&copy;2020.张知途爸爸</span>
+    </div>
+
+
 
 </body>
 <script>
-    let arr = document.querySelectorAll('.box-up span')
+    // 处理标尺上部分
+    let upSpans = document.querySelectorAll('.box-up span')
+    let downSpans = document.querySelectorAll('.box-down span');
     let boxDown = document.querySelector('.box-down');
     let monkey = document.querySelector('.monkey');
-    console.log(arr);
-    console.log(boxDown);
+    let num1 = 10;
+    let num2 = 1;
 
-    function clearSelect() {
-        for (let i = 0; i < arr.length; i++) {
-            arr[i].className = '';
+    function clearUpSelect() {
+        for (let i = 0; i < upSpans.length; i++) {
+            upSpans[i].className = '';
         }
     }
 
-    for (let i = 0; i < arr.length; i++) {
-        arr[i].addEventListener('click', function() {
-            clearSelect();
+    function clearDownSelect() {
+        for (let i = 1; i < downSpans.length; i++) {
+            downSpans[i].className = '';
+        }
+    }
+
+    function downSelectDefault() {
+        // clearDownSelect();
+        // downSpans[1].className = 'down-pin-select';
+        downSpans[1].click();
+
+    }
+
+    for (let i = 0; i < upSpans.length; i++) {
+        upSpans[i].addEventListener('click', function() {
+            let tmp = parseInt(this.innerText);
+            if (tmp == 0) return;
+            num1 = tmp;
+            clearUpSelect();
+            downSelectDefault();
             this.className = 'pin-select';
             let offset = (10 - this.innerText) * 50;
             boxDown.style.transform = 'translate(' + offset + 'px, 0)';
             monkey.style.transform = 'translate(' + offset + 'px, 0)';
         });
     }
+
+    let boxMinus = document.querySelector('.box-minus');
+    let boxAdd = document.querySelector('.box-add');
+    let boxNum1 = document.querySelector('.box-num1');
+    let boxNum2 = document.querySelector('.box-num2');
+    let boxNum3 = document.querySelector('.box-num3');
+
+    function showDetail() {
+        let num3 = num1 - num2;
+        boxNum1.innerHTML = num1;
+        boxNum2.innerHTML = num2;
+        boxNum3.innerHTML = num3;
+
+        boxMinus.innerHTML = `${num1} - ${num2} = ${num3}`;
+        boxAdd.innerHTML = `${num3} + ${num2} = ${num1}`;
+    }
+
+    for (let i = 0; i < downSpans.length; i++) {
+        downSpans[i].addEventListener('click', function() {
+            let tmp = parseInt(this.innerText);
+            if (tmp == 0) return;
+            if (tmp > num1) return;
+            num2 = tmp;
+
+            clearDownSelect();
+            this.className = 'down-pin-select';
+            showDetail();
+
+        });
+    }
+
+
+
+    console.log(num1, num2);
+    showDetail();
 </script>
 
 </html>
