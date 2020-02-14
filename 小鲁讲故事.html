@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小鲁讲故事</title>
+</head>
+
+<body>
+    <h1>小鲁讲故事</h1>
+    <ul>
+        <li>中国故事</li>
+    </ul>
+    <ul class="item-china-story">
+        <li>
+            <a href="xiaolu_story/china/011 开场序.mp3">开场序</a>
+        </li>
+    </ul>
+
+</body>
+<script>
+    let arr = ['291 皇帝梦.mp3', '021 最大方的人.mp3', '151武则天.mp3', '281青龙桥车站旁的铜像.mp3', '121书法换白鹅.mp3', '011 开场序.mp3', '242十三副盔甲.mp3', '131囚犯变贵客.mp3', '231秘密警察.mp3', '262向烟说不的林则徐.mp3', '081爬过裤裆的大将军.mp3', '212西方来的小探险家.mp3', '251郑成功赶走红毛鬼.mp3', '112火烧连环船.mp3', '171蜡烛少爷.mp3', '191慈仁侠客辛弃疾.mp3', '192蒙古少年铁木贞.mp3', '041 两个好朋友.mp3', '071东海求仙记.mp3', '292 八百壮士.mp3', '062鸡鸣狗盗.mp3', '012 魔镜公公.mp3', '141狼的子孙.mp3', '122魏孝文帝.mp3', '082缇萦救父.mp3', '032 渭水河边的老渔翁.mp3', '022 大禹治水.mp3', '111小太监与科学家.mp3', '271上帝的儿子.mp3', '211铜豆子关汉卿.mp3', '272黑旗军.mp3', '221和尚皇帝和大脚皇后.mp3', '202黄婆婆的纺织机.mp3', '101光武中兴.mp3', '042 老师中的老师.mp3', '162杨无敌.mp3', '132戴假面具的人.mp3', '302 红卫兵.mp3', '051 白发复仇者.mp3', '222三宝太监下西洋.mp3', '152都是美女惹的祸.mp3', '181包青天.mp3', '252打罗刹.mp3', '201正气歌.mp3', '182十二道金牌.mp3', '013 爱听中国历史歌.mp3', '014 开天辟地.mp3', '091响箭与飞将军.mp3', '261县长与皇帝老头.mp3', '241天地一游侠.mp3', '015 中国历史年代歌.mp3', '161赵匡胤.mp3', '232七家军.mp3', '061李冰战河神.mp3', '092苏武牧羊.mp3', '301 自己人打自己人.mp3', '142文成公主.mp3', '072鸿门宴.mp3', '052 将相和.mp3', '102勇敢的外交家.mp3', '282少年孙中山.mp3', '031 囚犯变宰相.mp3', '016 炎黄子孙.mp3', '172改变世界的印刷术.mp3'];
+
+    function loadData(arr, selectorStr) {
+        let ul = document.querySelector(selectorStr);
+        let innerHtml = '';
+        for (let i = 0; i < arr.length; i++) {
+            innerHtml += '<li><a href="xiaolu_story/china/' + arr[i] + '">' + arr[i].split('.')[0] + '</a></li>';
+        }
+        ul.innerHTML = innerHtml;
+    }
+
+    loadData(arr.sort(), '.item-china-story')
+</script>
+
+</html>
