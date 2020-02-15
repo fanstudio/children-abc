@@ -19,6 +19,16 @@
             text-align: center;
         }
         
+        .content h2 {
+            padding-left: 50px;
+            color: #333;
+            text-align: left;
+            height: 44px;
+            line-height: 44px;
+            background: url(images/moneky.png) no-repeat;
+            background-size: 44px 44px;
+        }
+        
         .content li {
             width: 155px;
             height: 200px;
@@ -27,6 +37,13 @@
             padding: 10px;
             background: white;
             box-shadow: 0 0 5px 1px #ccc;
+            transition: all .2s;
+        }
+        
+        .content li:hover {
+            width: 165px;
+            height: 210px;
+            margin: 0 0 -10px -10px;
         }
         
         .content li img {
@@ -43,36 +60,37 @@
 </head>
 
 <body>
-    <ul class="content">
-        <li>
-            <a href="认识英文字母.html">
-                <img src="images/aoe.jpeg" alt="">
-                <span>认识英文字母</span>
-            </a>
-        </li>
-        <li>
+    <div class="content clearfix">
+        <h2>小程序</h2>
+        <ul>
+            <li>
+                <a href="认识英文字母.html">
+                    <img src="images/abc.jpg" alt="">
+                    <span>认识英文字母</span>
+                </a>
+            </li>
+            <li>
 
-            <a href="认识拼音.html">
-                <img src="images/ABC.png" alt="">
-                <span>认识拼音</span>
-            </a>
-        </li>
-        <li>
+                <a href="认识拼音.html">
+                    <img src="images/aoe.jpg" alt="">
+                    <span>认识拼音</span>
+                </a>
+            </li>
+            <li>
 
-            <a href="加减法.html">
-                <img src="images/add.png" alt="">
-                <span>加减法</span>
-            </a>
-        </li>
-        <li>
-            <a href="小鲁讲故事.html">
-                <img src="images/china_wall.jpeg" alt="">
-                <span>小鲁讲故事</span>
-            </a>
-        </li>
-
-
-    </ul>
+                <a href="加减法.html">
+                    <img src="images/add.jpg" alt="">
+                    <span>加减法</span>
+                </a>
+            </li>
+            <li>
+                <a href="小鲁讲故事.html">
+                    <img src="images/china_wall.jpeg" alt="">
+                    <span>小鲁讲故事</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 
 </body>
 
